@@ -4,9 +4,9 @@ module.exports = {
         commonjs: true,
         es6: false,
     },
-    extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended"],
+   extends: [
+       "eslint:recommended",
+       "plugin:@typescript-eslint/recommended"],
     parser: "@typescript-eslint/parser",
     parserOptions: {
         ecmaVersion: 8,
@@ -22,5 +22,7 @@ module.exports = {
     rules: {
         'no-constant-condition': ['off'],
         "@typescript-eslint/no-floating-promises": "error",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
     }
 }
