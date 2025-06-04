@@ -5,7 +5,7 @@ export { }
 declare global {
     interface HP extends bitburner.HP { }
     interface Skills extends bitburner.Skills { }
-    type CodingContractData = bitburner.CodingContractData;
+    type CodingContractData = bitburner.CodingContract;
     type ScriptArg = bitburner.ScriptArg;
     type FilenameOrPID = bitburner.FilenameOrPID;
     interface Person extends bitburner.Person { }
@@ -34,7 +34,7 @@ declare global {
     interface CrimeStats extends bitburner.CrimeStats { }
     interface BasicHGWOptions extends bitburner.BasicHGWOptions { }
     interface AugmentPair extends bitburner.AugmentPair { }
-    interface StockOrderObject extends bitburner.StockOrderObject { }
+    // interface StockOrderObject extends bitburner.StockOrderObject { }
     interface StockOrder extends bitburner.StockOrder { }
     interface StockMarketConstants extends bitburner.StockMarketConstants { }
     interface ProcessInfo extends bitburner.ProcessInfo { }

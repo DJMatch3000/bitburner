@@ -69,7 +69,7 @@ export class Server {
     get availableRAM() {
         if (this.name === "home") {
             //return Math.floor((this.maxRAM - this.usedRAM) * 0.8 * 100) / 100
-            return Math.max(0, this.maxRAM - this.usedRAM - 10)
+            return Math.max(0, this.maxRAM - this.usedRAM - 100)
         }
         return Math.max(this.maxRAM - this.usedRAM, 0)
     }
@@ -117,12 +117,13 @@ export class Server {
     }
 
     //Methods
-    root(): void {
+    root(): boolean {
         const cracks: any[] = [this.ns.brutessh, this.ns.ftpcrack, this.ns.relaysmtp, this.ns.httpworm, this.ns.sqlinject]
         for (let i = 0; i < this.portsNeeded; i++) {
             cracks[i](this.name)
         }
         this.ns.nuke(this.name)
+        return true
     }
 }
 

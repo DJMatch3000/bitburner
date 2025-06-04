@@ -7,11 +7,37 @@ export async function main(ns: NS): Promise<void> {
     join factions
     purchase augs and reset
     */
-    const SCRIPTS = ['cycler.js', 'server-buyer.js', 'programctl.js', 'memoryctl.js', 'hacknetctl.js']
+
+    /**
+     * -Initialize BN stats
+     * -Start cycler
+     * -Determine faction to join
+     * -Start process to join faction
+     * -Once joined, work faction
+     * -Purchase augs and reset
+     * -Clear BN stats and hack w0rld_d43m0n
+     */
+
+    if (!ns.fileExists("BN_mults.json")) {
+        ns.write("BN_mults.json", JSON.stringify(ns.getBitNodeMultipliers(), null, 2), "w")
+    }
+
+    if (!ns.fileExists("factions_joined.txt")) {
+        ns.write("factions_joined.txt")
+    }
+
+    const SCRIPTS = [
+        'cycler.js', 
+        'memoryctl.js', 
+        'serverctl.js', 
+        'programctl.js', 
+        // 'hacknetctl.js',
+        'factionctl.js'
+    ]
 
     for (const s of SCRIPTS) {
-        if (!ns.isRunning(s)) {
-            ns.run(s)
+        while (ns.run(s) === 0) {
+            await ns.asleep(100)
         }
     }
 }
